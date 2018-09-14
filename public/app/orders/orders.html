@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Order List</title>
+</head>
+
+<body>
+  <img src="/app/Images/joseph-farms-cheese-header.jpg" alt="Joseph Gallo Farms Image">
+  <h1 id='title'>Cheese Orders</h1>
+
+  <div>
+    <div id="orderListForm">
+      <form name="searchDate">
+        <label>
+          <strong>Cheese Sale Date</strong>
+          <span class="required">*</span>
+        </label>
+        <input type="date" name="date" ng-model="myDate">
+        <button ng-click="send()">
+          <strong>Search</strong>
+        </button>
+      </form>
+    </div>
+    <br />
+    <br />
+
+    <div id="filter">
+      <b>Filter:</b>
+      <input ng-model="query" type="text" />
+      <a id="navigateLink" href="/picklist">Go to Pick List</a>
+    </div>
+    <br>
+
+    <table id="sortTable">
+      <tr>
+        <th>
+          <a id='heading' href="" ng-click="sortField = 'id'; reverse = !reverse">Id</th>
+        <th>
+          <a id="heading" href="" ng-click="sortField = 'boxnum'; reverse = !reverse">Box #</th>
+        <th>
+          <a id="heading" href="" ng-click="sortField = 'empnum'; reverse = !reverse">Employee Number</th>
+        <th>
+          <a id="heading" href="" ng-click="sortField = 'fname'; reverse = !reverse">First Name</th>
+        <th>
+          <a id="heading" href="" ng-click="sortField = 'lname'; reverse = !reverse">Last Name</th>
+        <th>
+          <a id="heading" href="" ng-click="sortField = 'saledate'; reverse = !reverse">Sale Date</th>
+        <th>
+          <a id="heading" href="" ng-click="sortField = 'variety'; reverse = !reverse">Variety</th>
+        <th>
+          <a id="heading" href="" ng-click="sortField = 'style'; reverse = !reverse">Style</th>
+        <th>
+          <a id="heading" href="" ng-click="sortField = 'size'; reverse = !reverse">Size</th>
+        <th>
+          <a id="heading" href="" ng-click="sortField = 'qty'; reverse = !reverse">Qty</th>
+        <th>
+          <a id="heading" href="" ng-click="sortField = 'pounds'; reverse = !reverse">Pounds</th>
+            <th>
+              <a id="heading" href="" ng-click="sortField = 'pickUpStatus'; reverse = !reverse">Pick up Status</th>
+        <th>
+          <a id="heading" href="" ng-click="sortField = 'pickUpStatus'; reverse = !reverse">Pick up?</th>
+        <th>
+          <a id="heading" href="" ng-click="sortField = 'orderdate'; reverse = !reverse">Order Date</th>
+        <th>Delete</th>
+        <th>Pick-up?</th>
+      </tr>
+      <tr id="sortData" ng-repeat="(key,value) in orders | filter:query | orderBy:sortField:!reverse">
+          <td>{{value.id}}</td>
+        <td>{{value.boxnum}}</td>
+        <td>{{value.empnum}}</td>
+        <td>{{value.fname}}</td>
+        <td>{{value.lname}}</td>
+        <td>{{value.saledate}}</td>
+        <td>{{value.variety}}</td>
+        <td>{{value.style}}</td>
+        <td>{{value.size}}</td>
+        <td>{{value.qty}}</td>
+        <td>{{value.pounds}}</td>
+        <td>{{value.pickupstatus}}</td>
+        <td ng-click='pickUpFunc(key, value.id)'>
+              <input type="checkbox" ng-model="value.check" ng-checked="value.pickupstatus == 'No'">
+        </td>
+        <td>{{value.orderdate}}</td>
+        <td ng-click='deleteFunc(value.id, key)'>
+          <a href="">Delete</a>
+        </td>
+        <td>{{value.check}}</td>
+      </tr>
+    </table>
+    <hr>
+    <form ng-submit="addFunc()">
+      <input id="addId" type="number" ng-model="id" placeholder="Id">
+      <input id="addBoxnum" type="number" ng-model="boxnum" placeholder="Box #" required>
+      <input id="addSaledate" type="text" ng-model="saledate" placeholder="Sale Date" required>
+      <input id="addVariety" type="text" ng-model="variety" placeholder="Variety" required>
+      <input id="addStyle" type="text" ng-model="style" placeholder="Style" required>
+      <input id="addSize" type="text" ng-model="size" placeholder="Size" required>
+      <input id="addQty" type="number" ng-model="qty" placeholder="Qty" required>
+      <input id="addPounds" type="text" ng-model="pounds" placeholder="Pounds" required>
+      <input id="add" type="submit" value="add">
+    </form>
+    
+    <p>Here is the test: </p>
+    <p>{{test}}</p>
+  </div>
+</body>
+
+</html>

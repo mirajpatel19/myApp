@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Pay Roll</title>
+</head>
+
+<body>
+  <img src="/app/Images/joseph-farms-cheese-header.jpg" alt="Joseph Gallo Farms Image">
+  <h1 id='title'>Pay Roll</h1>
+
+  <div>
+    <div id="payRollForm">
+      <form name="searchDate">
+        <label>
+          <strong>Cheese Sale Date</strong>
+          <span class="required">*</span>
+        </label>
+        <input type="date" name="date" ng-model="myDate">
+        <button ng-click="send()">
+          <strong>Search</strong>
+        </button>
+      </form>
+    </div>
+    <br />
+    <br />
+
+    <div id="filter">
+      <b>Filter:</b>
+      <input ng-model="query" type="text" />
+    </div>
+    <br>
+
+    <table id="sortTablePayRoll">
+      <tr>
+        <th>
+          <a id="heading" href="" ng-click="sortField = 'empnum'; reverse = !reverse">Employee Number</th>
+        <th>
+          <a id="heading" href="" ng-click="sortField = 'fname'; reverse = !reverse">First Name</th>
+        <th>
+          <a id="heading" href="" ng-click="sortField = 'lname'; reverse = !reverse">Last Name</th>
+        <th>
+          <a id="heading" href="" ng-click="sortField = 'totalpounds'; reverse = !reverse">Total Pounds</th>
+        <th>
+          <a id="heading" href="" ng-click="sortField = 'totalamount'; reverse = !reverse">Total Amount</th>
+        <th>
+          <a id="heading" href="" ng-click="sortField = 'emptype'; reverse = !reverse">Employment Type</th>
+        <th>
+          <a id="heading" href="" ng-click="sortField = 'pickupstatus'; reverse = !reverse">Pick Up Status</th>
+      </tr>
+      <tr id="sortData" ng-repeat="order in orders | filter:query | orderBy:sortField:!reverse">
+        <td>{{order.empnum}}</td>
+        <td>{{order.fname}}</td>
+        <td>{{order.lname}}</td>
+        <td>{{order.totalpounds}}</td>
+        <td>{{'$' + order.totalamount}}</td>
+        <td>{{order.emptype}}</td>
+        <td>{{order.pickupstatus}}</td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+</html>

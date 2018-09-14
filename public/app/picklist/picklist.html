@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Pick List</title>
+</head>
+
+<body>
+  <img src="/app/Images/joseph-farms-cheese-header.jpg" alt="Joseph Gallo Farms Image">
+  <h1 id='title'>Pick List</h1>
+
+  <div>
+    <div id="pickListForm">
+      <form name="searchDate">
+        <label>
+          <strong>Cheese Sale Date</strong>
+          <span class="required">*</span>
+        </label>
+        <input type="date" name="date" ng-model="myDate">
+        <button ng-click="send()">
+          <strong>Search</strong>
+        </button>
+      </form>
+    </div>
+    <br />
+    <br />
+
+    <div id="filter">
+      <b>Filter:</b>
+      <input ng-model="query" type="search" placeholder="Search">
+      <a id="navigateLink" href="/orders">Go to Orders</a>
+    </div>
+    <br>
+
+    <table id="sortTablePickList">
+      <tr>
+        <th>
+          <a id="heading" href="" ng-click="sortField = 'saledate'; reverse = !reverse">Sale Date</th>
+        <th>
+          <a id="heading" href="" ng-click="sortField = 'variety'; reverse = !reverse">Variety</th>
+        <th>
+          <a id="heading" href="" ng-click="sortField = 'style'; reverse = !reverse">Style</th>
+        <th>
+          <a id="heading" href="" ng-click="sortField = 'size'; reverse = !reverse">Size</th>
+        <th>
+          <a id="heading" href="" ng-click="sortField = 'qty'; reverse = !reverse">Total Qty</th>
+        <th>
+          <a id="heading" href="" ng-click="sortField = 'count'; reverse = !reverse">Orders</th>
+      </tr>
+      <tr id="sortData" ng-repeat="(key,value) in orders | filter:query | orderBy:sortField:!reverse">
+        <td>{{value.saledate}}</td>
+        <td>{{value.variety}}</td>
+        <td>{{value.style}}</td>
+        <td>{{value.size}}</td>
+        <td>{{value.qty}}</td>
+        <td>
+          <a href="/orders" ng-click="getOrder(key,value)"> {{value.count}}</a> <!-- target="_blank" -->
+        </td>
+      </tr>
+    </table>
+    <p>Here is the test: </p>
+    <p>{{test}}</p>
+  </div>
+</body>
+
+</html>

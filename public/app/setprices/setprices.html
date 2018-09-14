@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Set Prices</title>
+</head>
+
+<body>
+    <img src="/app/Images/joseph-farms-cheese-header.jpg" alt="Joseph Gallo Farms Image">
+    <h1 id='title'>Set Prices</h1>
+
+    <div>
+        <div id="filter">
+            <b>Filter:</b>
+            <input ng-model="query" type="text" />
+        </div>
+        <br>
+
+        <table id="sortTableTest">
+            <tr>
+                <th>
+                    <a id="heading" href="" ng-click="sortField = 'id'; reverse = !reverse">Id</th>
+                <th>
+                    <a id="heading" href="" ng-click="sortField = 'saledate'; reverse = !reverse">Cheese Sale date</th>
+                <th>
+                    <a id="heading" href="" ng-click="sortField = 'price'; reverse = !reverse">Price</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th>
+                    <form ng-submit="addFunc()">
+                        <input id="addSaleDate" type="date" ng-model="saledate" required>
+                </th>
+                <th>
+                    <input id="addPrice" type="text" ng-model="price" placeholder="0.00" required>
+                </th>
+                <th>
+                    <input id='setPricesButton' type="submit" value="add">
+                    </form>
+                </th>
+            </tr>
+            <tr id="sortData" ng-repeat="(key,value) in orders | filter:query | orderBy:sortField:!reverse">
+                <td>{{value.id}}</td>
+                <td>{{value.saledate}}</td>
+                <td>{{value.price}}</td>
+                <td id='test' ng-click='deleteFunc(key, value)'>
+                    <a href="">Delete</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
