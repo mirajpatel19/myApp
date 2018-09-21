@@ -1,3 +1,0 @@
-RewriteEngin On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)$ %{ENV:BASE}index.html [QSA,L]

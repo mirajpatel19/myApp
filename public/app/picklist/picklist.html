@@ -29,7 +29,7 @@
     <div id="filter">
       <b>Filter:</b>
       <input ng-model="query" type="search" placeholder="Search">
-      <a id="navigateLink" href="/orders">Go to Orders</a>
+      <a id="navigateLink" href="/#/orders">Go to Orders</a>
     </div>
     <br>
 
@@ -55,12 +55,10 @@
         <td>{{value.size}}</td>
         <td>{{value.qty}}</td>
         <td>
-          <a href="/orders" ng-click="getOrder(key,value)"> {{value.count}}</a> <!-- target="_blank" -->
+          <a href="/#/orders" ng-click="getOrder(key,value)"> {{value.count}}</a> <!-- target="_blank" -->
         </td>
       </tr>
     </table>
-    <p>Here is the test: </p>
-    <p>{{test}}</p>
   </div>
 </body>
 

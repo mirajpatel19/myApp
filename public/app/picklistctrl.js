@@ -1,8 +1,6 @@
 app.controller('picklistctrl', function ($scope, $http, myService) {
     $scope.date = ' ';
     $scope.send = function () {
-        console.log("inside send function");
-        console.log($scope.myDate);
         var posting = $http({
             method: 'POST',
             url: '/picklist',
@@ -11,30 +9,22 @@ app.controller('picklistctrl', function ($scope, $http, myService) {
             }
         }).then(function (response) {
             $scope.orders = response.data;
-            console.log($scope.orders);
             $scope.sortField = 'userid';
             $scope.reverse = true;
         })
     }
 
     $scope.getOrder = function (key, value) {
-        console.log(key, value);
-        console.log('test');
         $scope.fullOrder = value;
-
         //calling the service, inject myService into the function!
-        //$rootScope.test = 7000; 
         myService.fillOrder($scope.fullOrder);
         $scope.test = myService.getOrder();
     };
 
     //getting next cheese sale date.
     var date = new Date();
-    //console.log("todays date: " + date);
     var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-    //console.log('First day of month: ' + firstDay);
     var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-    // console.log('Last day of month: ' + lastDay);
     var dayOfMonth = firstDay.getDate();
     var fridayCounter = 1;
     var thirdFriday;
@@ -55,7 +45,5 @@ app.controller('picklistctrl', function ($scope, $http, myService) {
         dayOfMonth = dayOfMonth + 1;
     }
     console.log("3rd friday: " + thirdFriday);
-    //var test = new Date(date.getFullYear(), date.getMonth(), 6);
-    //document.getElementById("saledate").valueAsDate = thirdFriday;
     $scope.myDate = thirdFriday;
 });

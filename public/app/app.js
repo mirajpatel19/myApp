@@ -3,7 +3,8 @@ var app = angular.module('myApp', [
     ])
 
     .config(function ($routeProvider, $locationProvider) {
-        $locationProvider.html5Mode(true);
+        // $locationProvider.html5Mode(true);
+        $locationProvider.hashPrefix('');
         $routeProvider
     .when('/', {
         templateUrl: '/app/home/home.html',
@@ -28,21 +29,17 @@ var app = angular.module('myApp', [
     .otherwise({redirectTo: '/'});
 });
 
-//test
+//Service
 app.service('myService', function($rootScope) {
-    const obj = {};
-    console.log('inside myService');
+    var serviceOrder = {};
 
     fillOrder = function(myOrders) {
-        obj.myOrderService = myOrders;
-        console.log('filling the order');
-        console.log($rootScope.myOrderService);
+        serviceOrder = myOrders;
+        serviceOrder.serviceValue = "True";
     }
 
     getOrder = function() {
-        console.log('into getOrder function');
-        console.log(obj.myOrderService);
-        return obj.myOrderService;
+        return serviceOrder;
     }
 
     return {
