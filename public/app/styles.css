@@ -163,13 +163,7 @@ select {
 }
 
 #main {
-  /* /app/home/index.html */
-  /* background-image: url(/app/Images/photo-1523741543316-beb7fc7023d8.jpeg); */
-  
-  background-image: url(/app/Images/joseph-farms-cheese-header.jpg);
-
-  /* background-image: url(./images/photo-1523741543316-beb7fc7023d8.jpeg); */
-  /* background-size:cover; */
+  background-image: url(/app/Images/photo-1523741543316-beb7fc7023d8.jpeg);
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -179,7 +173,7 @@ select {
 }
 
 #indexForm {
-  /* //background-color: red; */
+  /* background-color: red; */
   margin: 0 auto;
   width: 1400px;
   height: 850px;
@@ -350,4 +344,9 @@ select {
 
 #filter input {
   width: 30%;
+}
+
+#addForm {
+  //background-color: red;
+  text-align: center;
 }

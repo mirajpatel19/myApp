@@ -10,7 +10,7 @@ app.controller('orderctrl', function ($scope, $http, myService) {
     }
     $scope.serviceOrder.serviceValue = "False";
 
-    $scope.pickUpFunc= function (key, value) {
+    $scope.pickUpFunc = function (key, value) {
         $http.post('/pickupstatus', {
             'id': value
         })

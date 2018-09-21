@@ -24,6 +24,8 @@ app.use(bodyParser.urlencoded({
 
 // DB connect String
 var connectionString = "postgres://postgres:1114@localhost:5432/testdb";
+//var connectionString = "postgres://pmoore:Passw0rd@10.4.1.48:5432/cheeseorders";
+
 const client = new pg.Client(connectionString);
 
 app.get('/cheeseorderform', function (req, res, next) {

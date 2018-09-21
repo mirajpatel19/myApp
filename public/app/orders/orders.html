@@ -6,7 +6,7 @@
   <title>Order List</title>
 </head>
 
-<body>
+<body id="ordersBody">
   <img src="/app/Images/joseph-farms-cheese-header.jpg" alt="Joseph Gallo Farms Image">
   <h1 id='title'>Cheese Orders</h1>
 
@@ -35,8 +35,8 @@
 
     <table id="sortTable">
       <tr>
-        <th>
-          <a id='heading' href="" ng-click="sortField = 'id'; reverse = !reverse">Id</th>
+        <!-- <th>
+          <a id='heading' href="" ng-click="sortField = 'id'; reverse = !reverse">Id</th> -->
         <th>
           <a id="heading" href="" ng-click="sortField = 'boxnum'; reverse = !reverse">Box #</th>
         <th>
@@ -57,17 +57,17 @@
           <a id="heading" href="" ng-click="sortField = 'qty'; reverse = !reverse">Qty</th>
         <th>
           <a id="heading" href="" ng-click="sortField = 'pounds'; reverse = !reverse">Pounds</th>
-            <th>
-              <a id="heading" href="" ng-click="sortField = 'pickUpStatus'; reverse = !reverse">Pick up Status</th>
+            <!-- <th>
+              <a id="heading" href="" ng-click="sortField = 'pickUpStatus'; reverse = !reverse">Pick up Status</th> -->
         <th>
-          <a id="heading" href="" ng-click="sortField = 'pickUpStatus'; reverse = !reverse">Pick up?</th>
+          <a id="heading" href="" ng-click="sortField = 'pickUpStatus'; reverse = !reverse">Pick up Status?</th>
         <th>
           <a id="heading" href="" ng-click="sortField = 'orderdate'; reverse = !reverse">Order Date</th>
         <th>Delete</th>
-        <th>Pick-up?</th>
+        <!-- <th>Pick-up?</th> -->
       </tr>
       <tr id="sortData" ng-repeat="(key,value) in orders | filter:query | orderBy:sortField:!reverse">
-          <td>{{value.id}}</td>
+        <!-- <td>{{value.id}}</td> -->
         <td>{{value.boxnum}}</td>
         <td>{{value.empnum}}</td>
         <td>{{value.fname}}</td>
@@ -78,20 +78,20 @@
         <td>{{value.size}}</td>
         <td>{{value.qty}}</td>
         <td>{{value.pounds}}</td>
-        <td>{{value.pickupstatus}}</td>
-        <td ng-click='pickUpFunc(key, value.id)'>
-              <input type="checkbox" ng-model="value.check" ng-checked="value.pickupstatus == 'No'">
+        <!-- <td>{{value.pickupstatus}}</td> -->
+        <td>
+          <input type="checkbox" ng-click='pickUpFunc(key, value.id)' ng-model="value.check" ng-checked="value.pickupstatus == 'Yes'">
         </td>
         <td>{{value.orderdate}}</td>
         <td ng-click='deleteFunc(value.id, key)'>
           <a href="">Delete</a>
         </td>
-        <td>{{value.check}}</td>
+        <!-- <td>{{value.check}}</td> -->
       </tr>
     </table>
     <hr>
-    <form ng-submit="addFunc()">
-      <input id="addId" type="number" ng-model="id" placeholder="Id">
+    <form id="addForm" ng-submit="addFunc()">
+      <input id="addId" type="number" ng-model="id" placeholder="Id" hidden>
       <input id="addBoxnum" type="number" ng-model="boxnum" placeholder="Box #" required>
       <input id="addSaledate" type="text" ng-model="saledate" placeholder="Sale Date" required>
       <input id="addVariety" type="text" ng-model="variety" placeholder="Variety" required>

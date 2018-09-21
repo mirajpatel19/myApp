@@ -44,6 +44,5 @@ app.controller('picklistctrl', function ($scope, $http, myService) {
         }
         dayOfMonth = dayOfMonth + 1;
     }
-    console.log("3rd friday: " + thirdFriday);
     $scope.myDate = thirdFriday;
 });

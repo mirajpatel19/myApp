@@ -36,6 +36,24 @@ app.controller('payrollctrl', function ($scope, $http) {
         }
         dayOfMonth = dayOfMonth + 1;
     }
-    console.log("3rd friday: " + thirdFriday);
     $scope.myDate = thirdFriday;
+
+    $scope.download = function () {
+        let csvContent = "data:text/csv;charset=utf-8,"; 
+
+        csvContent += "Employee Number, First Name, Last Name, Total Pounds, Total Amount, Employment Type, Pick Up Status\r\n";
+        $scope.orders.forEach((item, i) => {
+            csvContent += $scope.orders[i].empnum + ',' + $scope.orders[i].fname + ',' + $scope.orders[i].lname + ',' + $scope.orders[i].totalpounds + ',' + $scope.orders[i].totalamount + ',' + $scope.orders[i].emptype + ',' + $scope.orders[i].pickupstatus + "\r\n";
+        });
+        var link = document.createElement('a');
+        if (typeof link.download === 'string') {
+            document.body.appendChild(link); // Firefox requires the link to be in the body
+            link.download = "Pay Roll.csv";
+            link.href = encodeURI(csvContent);
+            link.click();
+            document.body.removeChild(link); // remove the link when done
+        } else {
+            location.replace(uri);
+        }
+    }
 });

@@ -4,12 +4,308 @@
 <head>
   <meta charset="utf-8">
   <title>Cheese Sales</title>
-  <!-- <link rel="stylesheet" href="styles.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <script src="app.js"></script> -->
 </head>
 
 <body id="main">
+   <!-- SCRIPT SCRIPT-->
+   <script>
+  
+      function populateSize(vari, sty, siz) {
+        var vari = document.getElementById(vari);
+        var sty = document.getElementById(sty);
+        var siz = document.getElementById(siz);
+        siz.innerHTML = "";
+        if (vari.value == "-") {
+          var optionArray = ["0|0"];
+        } else if ((vari.value == "Marble Jack" & sty.value == "Shingle") | (vari.value == "Monterey Jack" & sty.value ==
+            "Shingle") | (vari.value == "Monterey Jack" & sty.value == "Chunk") | (vari.value == "Pepper Jack" & sty.value ==
+            "Shingle") | (vari.value == "Marble Cheddar" & sty.value == "Sliced") | (vari.value == "Medium Cheddar" & sty
+            .value == "Shingle") | (vari.value == "Mild Cheddar" & sty.value == "Sliced") | (vari.value ==
+            "Sharp Cheddar" & sty.value == "Shred") | (vari.value == "Mozz" & sty.value == "Shingle") | (vari.value ==
+            "Cream Cheese" & sty.value == "Chunk") | (vari.value == "Muenster" & sty.value == "Shingle") | (vari.value ==
+            "Provolone" & sty.value == "Shingle") | (vari.value == "Swiss" & sty.value == "Shingle")) {
+          var optionArray = ["0|0", "8 oz|8 oz"];
+        } else if ((vari.value == "Marble Jack" & sty.value == "Chunk") | (vari.value == "Marble Cheddar" & sty.value ==
+            "Chunk") | (vari.value == "Medium Cheddar" & sty.value == "Chunk") | (vari.value == "Mild Cheddar" & sty.value ==
+            "Chunk") | (vari.value == "Mozz" & sty.value == "Chunk")) {
+          var optionArray = ["0|0", "8 oz|8 oz", "1 lb|1 lb", "2 lb|2 lb", "4 lb|4 lb"];
+        } else if ((vari.value == "Monterey Jack" & sty.value == "Shred") | (vari.value == "Mild Cheddar" & sty.value ==
+            "Shred") | (vari.value == "Sharp Cheddar" & sty.value == "Chunk")) {
+          var optionArray = ["0|0", "8 oz|8 oz", "1 lb|1 lb", "2 lb|2 lb", "5 lb|5 lb"];
+        } else if ((vari.value == "Pepper Jack" & sty.value == "Chunk") | (vari.value == "Marble Cheddar" & sty.value ==
+            "Shred")) {
+          var optionArray = ["0|0", "8 oz|8 oz", "1 lb|1 lb", "2 lb|2 lb"];
+        } else if ((vari.value == "Part Skim Mozz" & sty.value == "Ball") | (vari.value == "Whole Milk Mozz" & sty.value ==
+            "Ball")) {
+          var optionArray = ["0|0", "1 lb|1 lb", "2 lb|2 lb"];
+        } else if ((vari.value == "String" & sty.value == "String") | (vari.value == "Swiss" & sty.value == "Chunk")) {
+          var optionArray = ["0|0", "1 lb|1 lb"];
+        } else if ((vari.value == "Variety Pack" & sty.value == "Sliced")) {
+          var optionArray = ["0|0", "2 lb|2 lb"];
+        } else if (vari.value == "Marble Jack" | vari.value == "Monterey Jack" | vari.value == "Pepper Jack" | vari.value ==
+          "Marble Cheddar" | vari.value == "Medium Cheddar" | vari.value == "Mild Cheddar" | vari.value ==
+          "Sharp Cheddar" | vari.value == "Part Skim Mozz" | vari.value == "Whole Milk Mozz" | vari.value == "Mozz" | vari.value == "String" |
+          vari.value == "Cream Cheese" | vari.value == "Muenster" | vari.value == "Provolone" | vari.value == "Swiss" |
+          vari.value == "Variety Pack") {
+          var optionArray = ["0|0"];
+        }
+  
+        for (var option in optionArray) {
+          var pair = optionArray[option].split("|");
+          var newOption = document.createElement("option");
+          newOption.value = pair[0];
+          newOption.innerHTML = pair[1];
+          siz.options.add(newOption);
+        }
+      }
+  
+      // function populateQty(vari, qt) {
+      //   var vari = document.getElementById(vari);
+      //   var qt = document.getElementById(qt);
+      //   qt.innerHTML = "";
+      //   if (vari.value == "-"){
+      //     var optionArray = ["0|0"];
+      //   } else {
+      //     var optionArray = ["0|0", "1|1", "2|2", "3|3", "4|4", "5|5", "6|6", "7|7", "8|8", "9|9", "10|10", "11|11",
+      //       "12|12", "13|13", "14|14", "15|15"
+      //     ];
+      //   }
+  
+      //   for (var option in optionArray) {
+      //     var pair = optionArray[option].split("|");
+      //     var newOption = document.createElement("option");
+      //     newOption.value = pair[0];
+      //     newOption.innerHTML = pair[1];
+      //     qt.options.add(newOption);
+      //   }
+      // }
+    </script>
+  
+    <!-- Code to reset total box with reset button. -->
+    <script>
+      function myReset() {
+        console.log('into warm');
+        document.getElementById("total").innerHTML = "";
+      }
+    </script>
+  
+    <script>
+      function countPounds() {
+        // var calPounds1 =
+      }
+    </script>
+  
+    <script>
+      function myCalTotal() {
+        var calQty1 = document.getElementById("qty1").value;
+        var calQty2 = document.getElementById("qty2").value;
+        var calQty3 = document.getElementById("qty3").value;
+        var calQty4 = document.getElementById("qty4").value;
+        var calQty5 = document.getElementById("qty5").value;
+        var calQty6 = document.getElementById("qty6").value;
+        var calQty7 = document.getElementById("qty7").value;
+        var calQty8 = document.getElementById("qty8").value;
+        var calQty9 = document.getElementById("qty9").value;
+        var calQty10 = document.getElementById("qty10").value;
+        var calQty11 = document.getElementById("qty11").value;
+        var calQty12 = document.getElementById("qty12").value;
+        var calQty13 = document.getElementById("qty13").value;
+        var calQty14 = document.getElementById("qty14").value;
+        var calQty15 = document.getElementById("qty15").value;
+        var calQty16 = document.getElementById("qty16").value;
+  
+        var calSize1 = document.getElementById("size1").value;
+        var calSize2 = document.getElementById("size2").value;
+        var calSize3 = document.getElementById("size3").value;
+        var calSize4 = document.getElementById("size4").value;
+        var calSize5 = document.getElementById("size5").value;
+        var calSize6 = document.getElementById("size6").value;
+        var calSize7 = document.getElementById("size7").value;
+        var calSize8 = document.getElementById("size8").value;
+        var calSize9 = document.getElementById("size9").value;
+        var calSize10 = document.getElementById("size10").value;
+        var calSize11 = document.getElementById("size11").value;
+        var calSize12 = document.getElementById("size12").value;
+        var calSize13 = document.getElementById("size13").value;
+        var calSize14 = document.getElementById("size14").value;
+        var calSize15 = document.getElementById("size15").value;
+        var calSize16 = document.getElementById("size16").value;
+  
+        if (parseInt(calSize1) == 8) {
+          calSize1 = 0.5;
+        }
+        if (parseInt(calSize2) == 8) {
+          calSize2 = 0.5;
+        }
+        if (parseInt(calSize3) == 8) {
+          calSize3 = 0.5;
+        }
+        if (parseInt(calSize4) == 8) {
+          calSize4 = 0.5;
+        }
+        if (parseInt(calSize5) == 8) {
+          calSize5 = 0.5;
+        }
+        if (parseInt(calSize6) == 8) {
+          calSize6 = 0.5;
+        }
+        if (parseInt(calSize7) == 8) {
+          calSize7 = 0.5;
+        }
+        if (parseInt(calSize8) == 8) {
+          calSize8 = 0.5;
+        }
+        if (parseInt(calSize9) == 8) {
+          calSize9 = 0.5;
+        }
+        if (parseInt(calSize10) == 8) {
+          calSize10 = 0.5;
+        }
+        if (parseInt(calSize11) == 8) {
+          calSize11 = 0.5;
+        }
+        if (parseInt(calSize12) == 8) {
+          calSize12 = 0.5;
+        }
+        if (parseInt(calSize13) == 8) {
+          calSize13 = 0.5;
+        }
+        if (parseInt(calSize14) == 8) {
+          calSize14 = 0.5;
+        }
+        if (parseInt(calSize15) == 8) {
+          calSize15 = 0.5;
+        }
+        if (parseInt(calSize16) == 8) {
+          calSize16 = 0.5;
+        }
+  
+        var calTotal = (parseInt(calQty1) * parseFloat(calSize1)) + (parseInt(calQty2) * parseFloat(calSize2)) + (
+            parseInt(calQty3) * parseFloat(calSize3)) +
+          (parseInt(calQty4) * parseFloat(calSize4)) + (parseInt(calQty5) * parseFloat(calSize5)) + (parseInt(calQty6) *
+            parseFloat(calSize6)) +
+          (parseInt(calQty7) * parseFloat(calSize7)) + (parseInt(calQty8) * parseFloat(calSize8)) + (parseInt(calQty9) *
+            parseFloat(calSize9)) +
+          (parseInt(calQty10) * parseFloat(calSize10)) + (parseInt(calQty11) * parseFloat(calSize11)) + (parseInt(
+            calQty12) * parseFloat(calSize12)) +
+          (parseInt(calQty13) * parseFloat(calSize13)) + (parseInt(calQty14) * parseFloat(calSize14)) + (parseInt(
+            calQty15) * parseFloat(calSize15)) +
+          (parseInt(calQty16) * parseFloat(calQty16))
+        console.log('Here is calTotal: ', calTotal);
+        // Alert Message!
+        if (parseFloat(calTotal) > 15.00) {
+          alert(
+            "Employee’s are allowed a maximum of 15 pounds for Monthly Cheese Orders. To submit the order, please lower the pounds."
+          );
+          document.getElementById("total").innerHTML = calTotal;
+          document.getElementById("submit").disabled = true;
+        } else {
+          document.getElementById("total").innerHTML = calTotal;
+          document.getElementById("submit").disabled = false;
+        }
+  
+        var countPounds1 = (parseInt(calQty1) * parseFloat(calSize1));
+        var countPounds2 = (parseInt(calQty2) * parseFloat(calSize2));
+        var countPounds3 = (parseInt(calQty3) * parseFloat(calSize3));
+        var countPounds4 = (parseInt(calQty4) * parseFloat(calSize4));
+        var countPounds5 = (parseInt(calQty5) * parseFloat(calSize5));
+        var countPounds6 = (parseInt(calQty6) * parseFloat(calSize6));
+        var countPounds7 = (parseInt(calQty7) * parseFloat(calSize7));
+        var countPounds8 = (parseInt(calQty8) * parseFloat(calSize8));
+        var countPounds9 = (parseInt(calQty9) * parseFloat(calSize9));
+        var countPounds10 = (parseInt(calQty10) * parseFloat(calSize10));
+        var countPounds11 = (parseInt(calQty11) * parseFloat(calSize11));
+        var countPounds12 = (parseInt(calQty12) * parseFloat(calSize12));
+        var countPounds13 = (parseInt(calQty13) * parseFloat(calSize13));
+        var countPounds14 = (parseInt(calQty14) * parseFloat(calSize14));
+        var countPounds15 = (parseInt(calQty15) * parseFloat(calSize15));
+        var countPounds16 = (parseInt(calQty16) * parseFloat(calSize16));
+  
+        document.getElementById("countPounds1").value = countPounds1;
+        document.getElementById("countPounds2").value = countPounds2;
+        document.getElementById("countPounds3").value = countPounds3;
+        document.getElementById("countPounds4").value = countPounds4;
+        document.getElementById("countPounds5").value = countPounds5;
+        document.getElementById("countPounds6").value = countPounds6;
+        document.getElementById("countPounds7").value = countPounds7;
+        document.getElementById("countPounds8").value = countPounds8;
+        document.getElementById("countPounds9").value = countPounds9;
+        document.getElementById("countPounds10").value = countPounds10;
+        document.getElementById("countPounds11").value = countPounds11;
+        document.getElementById("countPounds12").value = countPounds12;
+        document.getElementById("countPounds13").value = countPounds13;
+        document.getElementById("countPounds14").value = countPounds14;
+        document.getElementById("countPounds15").value = countPounds15;
+        document.getElementById("countPounds16").value = countPounds16;
+  
+        var calPounds = parseFloat(countPounds1) + parseFloat(countPounds2) + parseFloat(countPounds3) +
+          parseFloat(countPounds4) + parseFloat(countPounds5) + parseFloat(countPounds6) +
+          parseFloat(countPounds7) + parseFloat(countPounds8) + parseFloat(countPounds9) +
+          parseFloat(countPounds10) + parseFloat(countPounds11) + parseFloat(countPounds12) +
+          parseFloat(countPounds13) + parseFloat(countPounds14) + parseFloat(countPounds15) +
+          parseFloat(countPounds16);
+        console.log("Pounds all total: " + calPounds);
+      }
+    </script>
+  
+    <script>
+      function warn() {
+        var reminder = "Third Friday of every month!";
+        document.getElementById('demo').innerHTML = reminder;
+      }
+    </script>
+  
+    <script>
+      var date = new Date();
+      //console.log("todays date: " + date);
+      var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+      //console.log('First day of month: ' + firstDay);
+      var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+      // console.log('Last day of month: ' + lastDay);
+      var dayOfMonth = firstDay.getDate();
+      var fridayCounter = 1;
+      var thirdFriday;
+  
+      while (dayOfMonth < lastDay.getDate()) {
+        var newDate = new Date(date.getFullYear(), date.getMonth(), dayOfMonth);
+        if (newDate.getDay() == 5) {
+          //console.log(" ");
+          // console.log(newDate);
+          // console.log('ITS FRIDAY........');
+          //console.log(" ");
+  
+          if (fridayCounter == 3) {
+            //console.log('Its third friday of the month!!!!!!');
+            thirdFriday = newDate;
+            //console.log('Here is the date for it: ' + thirdFriday);
+          }
+          var fridayCounter = fridayCounter + 1;
+        }
+        dayOfMonth = dayOfMonth + 1;
+  
+      }
+      //console.log("3rd friday: " + thirdFriday);
+      var test = new Date(date.getFullYear(), date.getMonth(), 6);
+      document.getElementById("saledate").valueAsDate = thirdFriday;
+    </script>
+  
+    <!-- Setting the minimun value for cheeseSaleDate. -->
+    <script>
+      var today = new Date();
+      var dd = today.getDate();
+      var mm = today.getMonth() + 1; //January is 0
+      var yyyy = today.getFullYear();
+      dd = dd + 3;
+      if (dd < 10) {
+        dd = '0' + dd
+      }
+      if (mm < 10) {
+        mm = '0' + mm
+      }
+      today = yyyy + '-' + mm + '-' + dd;
+      document.getElementById("saledate").setAttribute("min", today);
+    </script>
+
   <img src="app/Images/joseph-farms-cheese-header.jpg" alt="Joseph Gallo Farms Image">
   <h1 id="title">Employee Cheese Sales</h1>
 
@@ -47,7 +343,7 @@
         <span class="required">*</span>
       </label>
       <br>
-      <input type="date" id="saledate" name="saledate" placeholder="Cheese Sale Date" required min='' max='' onclick=warn();>
+      <input type="date" id="saledate" name="saledate" placeholder="Cheese Sale Date" required min='' max='' onclick="warn()";>
       <label id="demo"></label>
       <br />
 
@@ -88,7 +384,7 @@
             <span class="required">*</span>
           </td>
           <td>
-            <select id="variety1" name="variety1" onchange="populateStyle('variety1','style1'), populateSize('variety1','style1','size1')">
+            <select id="variety1" ng-model="variety1" ng-change="populateStyle('variety1','style1'), populateSize('variety1','style1','size1')">
               <option value="-" selected>Select</option>
               <optgroup label="Jacks">
                 <option value="Marble Jack">Marble Jack</option>
@@ -1138,336 +1434,5 @@
       </button>
     </fieldset>
   </form>
-
-  <!-- SCRIPT SCRIPT-->
-  <script>
-    function populateStyle(vari, sty) {
-      var vari = document.getElementById(vari);
-      var sty = document.getElementById(sty);
-      sty.innerHTML = "";
-      if (vari.value == "-") {
-        var optionArray = ["-|Select"];
-      } else if (vari.value == "Marble Jack" | vari.value == "Pepper Jack" | vari.value == "Medium Cheddar" | vari.value ==
-        "Mozz" | vari.value == "Swiss") {
-        var optionArray = ["-|Select", "Chunk|Chunk", "Shingle|Shingle", ];
-      } else if (vari.value == "Monterey Jack") {
-        var optionArray = ["-|Select", "Chunk|Chunk", "Shingle|Shingle", "Shred|Shred"];
-      } else if (vari.value == "Marble Cheddar" | vari.value == "Mild Cheddar") {
-        var optionArray = ["-|Select", "Chunk|Chunk", "Shred|Shred", "Sliced|Sliced"];
-      } else if (vari.value == "Sharp Cheddar") {
-        var optionArray = ["-|Select", "Chunk|Chunk", "Shred|Shred"];
-      } else if (vari.value == "Part Skim Mozz" | vari.value == "Whole Milk Mozz") {
-        var optionArray = ["-|Select", "Ball|Ball"];
-      } else if (vari.value == "String") {
-        var optionArray = ["-|Select", "String|String"];
-      } else if (vari.value == "Cream Cheese") {
-        var optionArray = ["-|Select", "Chunk|Chunk"];
-      } else if (vari.value == "Muenster" | vari.value == "Provolone") {
-        var optionArray = ["-|Select", "Shingle|Shingle"];
-      } else if (vari.value == "Variety Pack") {
-        var optionArray = ["-|Select", "Sliced|Sliced"];
-      }
-
-      for (var option in optionArray) {
-        var pair = optionArray[option].split("|");
-        var newOption = document.createElement("option");
-        newOption.value = pair[0];
-        newOption.innerHTML = pair[1];
-        sty.options.add(newOption);
-      }
-    }
-
-    function populateSize(vari, sty, siz) {
-      var vari = document.getElementById(vari);
-      var sty = document.getElementById(sty);
-      var siz = document.getElementById(siz);
-      siz.innerHTML = "";
-      if (vari.value == "-") {
-        var optionArray = ["0|0"];
-      } else if ((vari.value == "Marble Jack" & sty.value == "Shingle") | (vari.value == "Monterey Jack" & sty.value ==
-          "Shingle") | (vari.value == "Monterey Jack" & sty.value == "Chunk") | (vari.value == "Pepper Jack" & sty.value ==
-          "Shingle") | (vari.value == "Marble Cheddar" & sty.value == "Sliced") | (vari.value == "Medium Cheddar" & sty
-          .value == "Shingle") | (vari.value == "Mild Cheddar" & sty.value == "Sliced") | (vari.value ==
-          "Sharp Cheddar" & sty.value == "Shred") | (vari.value == "Mozz" & sty.value == "Shingle") | (vari.value ==
-          "Cream Cheese" & sty.value == "Chunk") | (vari.value == "Muenster" & sty.value == "Shingle") | (vari.value ==
-          "Provolone" & sty.value == "Shingle") | (vari.value == "Swiss" & sty.value == "Shingle")) {
-        var optionArray = ["0|0", "8 oz|8 oz"];
-      } else if ((vari.value == "Marble Jack" & sty.value == "Chunk") | (vari.value == "Marble Cheddar" & sty.value ==
-          "Chunk") | (vari.value == "Medium Cheddar" & sty.value == "Chunk") | (vari.value == "Mild Cheddar" & sty.value ==
-          "Chunk") | (vari.value == "Mozz" & sty.value == "Chunk")) {
-        var optionArray = ["0|0", "8 oz|8 oz", "1 lb|1 lb", "2 lb|2 lb", "4 lb|4 lb"];
-      } else if ((vari.value == "Monterey Jack" & sty.value == "Shred") | (vari.value == "Mild Cheddar" & sty.value ==
-          "Shred") | (vari.value == "Sharp Cheddar" & sty.value == "Chunk")) {
-        var optionArray = ["0|0", "8 oz|8 oz", "1 lb|1 lb", "2 lb|2 lb", "5 lb|5 lb"];
-      } else if ((vari.value == "Pepper Jack" & sty.value == "Chunk") | (vari.value == "Marble Cheddar" & sty.value ==
-          "Shred")) {
-        var optionArray = ["0|0", "8 oz|8 oz", "1 lb|1 lb", "2 lb|2 lb"];
-      } else if ((vari.value == "Part Skim Mozz" & sty.value == "Ball") | (vari.value == "Whole Milk Mozz" & sty.value ==
-          "Ball")) {
-        var optionArray = ["0|0", "1 lb|1 lb", "2 lb|2 lb"];
-      } else if ((vari.value == "String" & sty.value == "String") | (vari.value == "Swiss" & sty.value == "Chunk")) {
-        var optionArray = ["0|0", "1 lb|1 lb"];
-      } else if ((vari.value == "Variety Pack" & sty.value == "Sliced")) {
-        var optionArray = ["0|0", "2 lb|2 lb"];
-      } else if (vari.value == "Marble Jack" | vari.value == "Monterey Jack" | vari.value == "Pepper Jack" | vari.value ==
-        "Marble Cheddar" | vari.value == "Medium Cheddar" | vari.value == "Mild Cheddar" | vari.value ==
-        "Sharp Cheddar" | vari.value == "Part Skim Mozz" | vari.value == "Whole Milk Mozz" | vari.value == "Mozz" | vari.value == "String" |
-        vari.value == "Cream Cheese" | vari.value == "Muenster" | vari.value == "Provolone" | vari.value == "Swiss" |
-        vari.value == "Variety Pack") {
-        var optionArray = ["0|0"];
-      }
-
-      for (var option in optionArray) {
-        var pair = optionArray[option].split("|");
-        var newOption = document.createElement("option");
-        newOption.value = pair[0];
-        newOption.innerHTML = pair[1];
-        siz.options.add(newOption);
-      }
-    }
-
-    // function populateQty(vari, qt) {
-    //   var vari = document.getElementById(vari);
-    //   var qt = document.getElementById(qt);
-    //   qt.innerHTML = "";
-    //   if (vari.value == "-"){
-    //     var optionArray = ["0|0"];
-    //   } else {
-    //     var optionArray = ["0|0", "1|1", "2|2", "3|3", "4|4", "5|5", "6|6", "7|7", "8|8", "9|9", "10|10", "11|11",
-    //       "12|12", "13|13", "14|14", "15|15"
-    //     ];
-    //   }
-
-    //   for (var option in optionArray) {
-    //     var pair = optionArray[option].split("|");
-    //     var newOption = document.createElement("option");
-    //     newOption.value = pair[0];
-    //     newOption.innerHTML = pair[1];
-    //     qt.options.add(newOption);
-    //   }
-    // }
-  </script>
-
-  <!-- Code to reset total box with reset button. -->
-  <script>
-    function myReset() {
-      document.getElementById("total").innerHTML = "";
-    }
-  </script>
-
-  <script>
-    function countPounds() {
-      // var calPounds1 =
-    }
-  </script>
-
-  <script>
-    function myCalTotal() {
-      var calQty1 = document.getElementById("qty1").value;
-      var calQty2 = document.getElementById("qty2").value;
-      var calQty3 = document.getElementById("qty3").value;
-      var calQty4 = document.getElementById("qty4").value;
-      var calQty5 = document.getElementById("qty5").value;
-      var calQty6 = document.getElementById("qty6").value;
-      var calQty7 = document.getElementById("qty7").value;
-      var calQty8 = document.getElementById("qty8").value;
-      var calQty9 = document.getElementById("qty9").value;
-      var calQty10 = document.getElementById("qty10").value;
-      var calQty11 = document.getElementById("qty11").value;
-      var calQty12 = document.getElementById("qty12").value;
-      var calQty13 = document.getElementById("qty13").value;
-      var calQty14 = document.getElementById("qty14").value;
-      var calQty15 = document.getElementById("qty15").value;
-      var calQty16 = document.getElementById("qty16").value;
-
-      var calSize1 = document.getElementById("size1").value;
-      var calSize2 = document.getElementById("size2").value;
-      var calSize3 = document.getElementById("size3").value;
-      var calSize4 = document.getElementById("size4").value;
-      var calSize5 = document.getElementById("size5").value;
-      var calSize6 = document.getElementById("size6").value;
-      var calSize7 = document.getElementById("size7").value;
-      var calSize8 = document.getElementById("size8").value;
-      var calSize9 = document.getElementById("size9").value;
-      var calSize10 = document.getElementById("size10").value;
-      var calSize11 = document.getElementById("size11").value;
-      var calSize12 = document.getElementById("size12").value;
-      var calSize13 = document.getElementById("size13").value;
-      var calSize14 = document.getElementById("size14").value;
-      var calSize15 = document.getElementById("size15").value;
-      var calSize16 = document.getElementById("size16").value;
-
-      if (parseInt(calSize1) == 8) {
-        calSize1 = 0.5;
-      }
-      if (parseInt(calSize2) == 8) {
-        calSize2 = 0.5;
-      }
-      if (parseInt(calSize3) == 8) {
-        calSize3 = 0.5;
-      }
-      if (parseInt(calSize4) == 8) {
-        calSize4 = 0.5;
-      }
-      if (parseInt(calSize5) == 8) {
-        calSize5 = 0.5;
-      }
-      if (parseInt(calSize6) == 8) {
-        calSize6 = 0.5;
-      }
-      if (parseInt(calSize7) == 8) {
-        calSize7 = 0.5;
-      }
-      if (parseInt(calSize8) == 8) {
-        calSize8 = 0.5;
-      }
-      if (parseInt(calSize9) == 8) {
-        calSize9 = 0.5;
-      }
-      if (parseInt(calSize10) == 8) {
-        calSize10 = 0.5;
-      }
-      if (parseInt(calSize11) == 8) {
-        calSize11 = 0.5;
-      }
-      if (parseInt(calSize12) == 8) {
-        calSize12 = 0.5;
-      }
-      if (parseInt(calSize13) == 8) {
-        calSize13 = 0.5;
-      }
-      if (parseInt(calSize14) == 8) {
-        calSize14 = 0.5;
-      }
-      if (parseInt(calSize15) == 8) {
-        calSize15 = 0.5;
-      }
-      if (parseInt(calSize16) == 8) {
-        calSize16 = 0.5;
-      }
-
-      var calTotal = (parseInt(calQty1) * parseFloat(calSize1)) + (parseInt(calQty2) * parseFloat(calSize2)) + (
-          parseInt(calQty3) * parseFloat(calSize3)) +
-        (parseInt(calQty4) * parseFloat(calSize4)) + (parseInt(calQty5) * parseFloat(calSize5)) + (parseInt(calQty6) *
-          parseFloat(calSize6)) +
-        (parseInt(calQty7) * parseFloat(calSize7)) + (parseInt(calQty8) * parseFloat(calSize8)) + (parseInt(calQty9) *
-          parseFloat(calSize9)) +
-        (parseInt(calQty10) * parseFloat(calSize10)) + (parseInt(calQty11) * parseFloat(calSize11)) + (parseInt(
-          calQty12) * parseFloat(calSize12)) +
-        (parseInt(calQty13) * parseFloat(calSize13)) + (parseInt(calQty14) * parseFloat(calSize14)) + (parseInt(
-          calQty15) * parseFloat(calSize15)) +
-        (parseInt(calQty16) * parseFloat(calQty16))
-      console.log('Here is calTotal: ', calTotal);
-      // Alert Message!
-      if (parseFloat(calTotal) > 15.00) {
-        alert(
-          "Employee’s are allowed a maximum of 15 pounds for Monthly Cheese Orders. To submit the order, please lower the pounds."
-        );
-        document.getElementById("total").innerHTML = calTotal;
-        document.getElementById("submit").disabled = true;
-      } else {
-        document.getElementById("total").innerHTML = calTotal;
-        document.getElementById("submit").disabled = false;
-      }
-
-      var countPounds1 = (parseInt(calQty1) * parseFloat(calSize1));
-      var countPounds2 = (parseInt(calQty2) * parseFloat(calSize2));
-      var countPounds3 = (parseInt(calQty3) * parseFloat(calSize3));
-      var countPounds4 = (parseInt(calQty4) * parseFloat(calSize4));
-      var countPounds5 = (parseInt(calQty5) * parseFloat(calSize5));
-      var countPounds6 = (parseInt(calQty6) * parseFloat(calSize6));
-      var countPounds7 = (parseInt(calQty7) * parseFloat(calSize7));
-      var countPounds8 = (parseInt(calQty8) * parseFloat(calSize8));
-      var countPounds9 = (parseInt(calQty9) * parseFloat(calSize9));
-      var countPounds10 = (parseInt(calQty10) * parseFloat(calSize10));
-      var countPounds11 = (parseInt(calQty11) * parseFloat(calSize11));
-      var countPounds12 = (parseInt(calQty12) * parseFloat(calSize12));
-      var countPounds13 = (parseInt(calQty13) * parseFloat(calSize13));
-      var countPounds14 = (parseInt(calQty14) * parseFloat(calSize14));
-      var countPounds15 = (parseInt(calQty15) * parseFloat(calSize15));
-      var countPounds16 = (parseInt(calQty16) * parseFloat(calSize16));
-
-      document.getElementById("countPounds1").value = countPounds1;
-      document.getElementById("countPounds2").value = countPounds2;
-      document.getElementById("countPounds3").value = countPounds3;
-      document.getElementById("countPounds4").value = countPounds4;
-      document.getElementById("countPounds5").value = countPounds5;
-      document.getElementById("countPounds6").value = countPounds6;
-      document.getElementById("countPounds7").value = countPounds7;
-      document.getElementById("countPounds8").value = countPounds8;
-      document.getElementById("countPounds9").value = countPounds9;
-      document.getElementById("countPounds10").value = countPounds10;
-      document.getElementById("countPounds11").value = countPounds11;
-      document.getElementById("countPounds12").value = countPounds12;
-      document.getElementById("countPounds13").value = countPounds13;
-      document.getElementById("countPounds14").value = countPounds14;
-      document.getElementById("countPounds15").value = countPounds15;
-      document.getElementById("countPounds16").value = countPounds16;
-
-      var calPounds = parseFloat(countPounds1) + parseFloat(countPounds2) + parseFloat(countPounds3) +
-        parseFloat(countPounds4) + parseFloat(countPounds5) + parseFloat(countPounds6) +
-        parseFloat(countPounds7) + parseFloat(countPounds8) + parseFloat(countPounds9) +
-        parseFloat(countPounds10) + parseFloat(countPounds11) + parseFloat(countPounds12) +
-        parseFloat(countPounds13) + parseFloat(countPounds14) + parseFloat(countPounds15) +
-        parseFloat(countPounds16);
-      console.log("Pounds all total: " + calPounds);
-    }
-  </script>
-
-  <script>
-    function warn() {
-      var reminder = "Third Friday of every month!";
-      document.getElementById('demo').innerHTML = reminder;
-    }
-  </script>
-
-  <script>
-    var date = new Date();
-    //console.log("todays date: " + date);
-    var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-    //console.log('First day of month: ' + firstDay);
-    var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-    // console.log('Last day of month: ' + lastDay);
-    var dayOfMonth = firstDay.getDate();
-    var fridayCounter = 1;
-    var thirdFriday;
-
-    while (dayOfMonth < lastDay.getDate()) {
-      var newDate = new Date(date.getFullYear(), date.getMonth(), dayOfMonth);
-      if (newDate.getDay() == 5) {
-        //console.log(" ");
-        // console.log(newDate);
-        // console.log('ITS FRIDAY........');
-        //console.log(" ");
-
-        if (fridayCounter == 3) {
-          //console.log('Its third friday of the month!!!!!!');
-          thirdFriday = newDate;
-          //console.log('Here is the date for it: ' + thirdFriday);
-        }
-        var fridayCounter = fridayCounter + 1;
-      }
-      dayOfMonth = dayOfMonth + 1;
-
-    }
-    //console.log("3rd friday: " + thirdFriday);
-    var test = new Date(date.getFullYear(), date.getMonth(), 6);
-    document.getElementById("saledate").valueAsDate = thirdFriday;
-  </script>
-
-  <!-- Setting the minimun value for cheeseSaleDate. -->
-  <script>
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth() + 1; //January is 0
-    var yyyy = today.getFullYear();
-    dd = dd + 3;
-    if (dd < 10) {
-      dd = '0' + dd
-    }
-    if (mm < 10) {
-      mm = '0' + mm
-    }
-    today = yyyy + '-' + mm + '-' + dd;
-    document.getElementById("saledate").setAttribute("min", today);
-  </script>
+</body>
+</html>
