@@ -8,30 +8,30 @@ app.controller('setpricesctrl', function ($scope, $http) {
 
     $scope.addFunc = function () {
         $http.post('/addPrices', {
-                'saledate': $scope.saledate,
-                'price': $scope.price
-            })
-            .then(function (response) {
-                var newDate = new Date($scope.saledate);
-                var day = newDate.getDate();
-                var month = newDate.getMonth() + 1;
-                var year = newDate.getFullYear();
-                if (day < 10) {
-                    day = '0' + day
-                }
-                if (month < 10) {
-                    month = '0' + month
-                }
-                var newDate = month + '/' + day + '/' + year;
-                $scope.orders.push({
-                    'saledate': newDate,
-                    'price': $scope.price,
-                    'id': response.data[0].id
-                });
-                //Clearing form values.
-                $scope.saledate = '';
-                $scope.price = '';
+            'saledate': $scope.saledate,
+            'price': $scope.price
+        })
+        .then(function (response) {
+            var newDate = new Date($scope.saledate);
+            var day = newDate.getDate();
+            var month = newDate.getMonth() + 1;
+            var year = newDate.getFullYear();
+            if (day < 10) {
+                day = '0' + day
+            }
+            if (month < 10) {
+                month = '0' + month
+            }
+            var newDate = month + '/' + day + '/' + year;
+            $scope.orders.push({
+                'saledate': newDate,
+                'price': $scope.price,
+                'id': response.data[0].id
             });
+            //Clearing form values.
+            $scope.saledate = '';
+            $scope.price = '';
+        });
     }
 
     $scope.deleteFunc = function (key, value) {

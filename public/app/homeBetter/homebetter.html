@@ -1,2 +1,531 @@
+<img src="app/Images/joseph-farms-cheese-header.jpg" alt="Joseph Gallo Farms Image">
 
-  <h1>Cheese Orders</h1>
+<h1 id="title">Employee Cheese Sales</h1>
+<div>
+  <form id="indexForm" ng-submit="submit()">
+    <fieldset id="fieldSetPersonal">
+      <legend>
+        <h3>
+          <i>Personal Information</i>
+        </h3>
+      </legend>
+      <label><strong>First Name: </label></strong><span class="required">*</span>
+      <br>
+      <input id="firstname" type="text" ng-model="firstname" placeholder="Miraj" required ng-click='getSaleDate()'>
+      <br>
+      <label><strong>Last Name: </label></strong><span class="required">*</span>
+      <br>
+      <input id="lastname" type="text" ng-model="lastname" placeholder="Patel" required>
+      <br>
+      <label><strong>Employee Number: </label></strong>
+      <span class="required">*</span>
+      <br>
+      <input id="employeenumber" type="number" ng-model="employeenumber" placeholder="1234" required>
+      <br>
+      <label><strong>Cheese Sale Date: </label></strong>
+      <span class="required">*</span>
+      <br>
+      <input id="saledate" type="date" ng-model="saledate" placeholder="Cheese Sale Date">
+      <br>
+      <label><strong>Employment Type: </label></strong>
+      <span class="required">*</span>
+      <br>
+      <input id="hourly" type="radio" ng-model="typeOfEmpm" value="Hourly">Hourly
+      <input id="salary" type="radio" ng-model="typeOfEmpm" value="Salary">Salary<br>
+      <label><strong>Email </label></strong>(to receive confirmation)
+      <br>
+      <input id="email" type="email" ng-model="email" placeholder="mpatel1@josephfarms.com">
+      <br>
+    </fieldset>
+
+    <fieldset id="fieldSetCheese">
+      <legend>
+        <h3>
+          <i>Cheese</i>
+        </h3>
+      </legend>
+      <table>
+        <tr>
+          <th>Number</th>
+          <th>Variety</th>
+          <th>Style</th>
+          <th>Size</th>
+          <th>Qty</th>
+          <th>Pounds</th>
+        </tr>
+        <!-- <tr>
+            <td>1<span class="required">*</span></td>
+            <td>
+              <select id="variety1" ng-model="variety1" ng-options="item.Variety as item.Variety for item in varietys | filter:{Type:Req:'MUST'}:true">
+                <option value="">Select</option>
+  
+              </select>
+            </td>
+            <td>
+              <select id="style1" ng-model="style1" ng-options="item.Variety as item.Variety for item in styles | filter: {Variety: Variety}: true">
+                <option value="">Select</option>
+              </select>
+            </td> -->
+        <tr>
+          <td>1<span class="required">*</span></td>
+          <td>
+            <select id="variety1" ng-model="" ng-model="variety1" ng-options="item.Variety group by item.Group for item in varietys" ng-change="update(variety1)">
+              <option value="">Select</option>
+
+            </select>
+          </td>
+          <td>
+            <select id="style1" ng-model="style1" ng-options="item.Style as item.Style for item in styles" | filter: {Variety: Variety}: true>
+              <option value="">Select</option>
+            </select>
+          </td>
+          <td>
+            <select id="size1" ng-model="size1" ng-options="item for item in sizes" ng-click='calPounds()'>
+              <!-- <option value="">0</option> -->
+            </select>
+          </td>
+          <td>
+            <select id="qty1" ng-model="qty1" ng-options="item for item in qtys" ng-click='calPounds()'>
+              <!-- <option value="">0</option> -->
+            </select>
+          </td>
+          <td>
+            <input id="countPounds1" type="text" ng-model="countPounds1" readonly><br>
+          </td>
+        </tr>
+
+        <tr>
+          <td>2</td>
+          <td>
+            <select id="variety2" ng-model="variety2" ng-options="item.Variety group by item.Group for item in varietys" ng-change="update(variety2)">
+              <option value="">Select</option>
+            </select>
+          </td>
+          <td>
+            <select id="style2" ng-model="style2" ng-options="item for item in styles">
+              <option value="">Select</option>
+            </select>
+          </td>
+          <td>
+            <select id="size2" ng-model="size2" ng-options="item for item in sizes" ng-click='calPounds()'>
+              <!-- <option value="">0</option> -->
+            </select>
+          </td>
+          <td>
+            <select id="qty2" ng-model="qty2" ng-options="item for item in qtys" ng-click='calPounds()'>
+              <!-- <option value="">0</option> -->
+            </select>
+          </td>
+          <td>
+            <input id="countPounds2" type="text" ng-model="countPounds2" readonly><br>
+          </td>
+        </tr>
+
+        <tr>
+          <td>3</td>
+          <td>
+            <select id="variety3" ng-model="variety3" ng-options="item.Variety group by item.Group for item in varietys">
+              <option value="">Select</option>
+              
+            </select>
+          </td>
+          <td>
+            <select id="style3" ng-model="style3" ng-options="item for item in styles">
+              <option value="">Select</option>
+              
+            </select>
+          </td>
+          <td>
+            <select id="size3" ng-model="size3" ng-options="item for item in sizes" ng-click='calPounds()'>
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <select id="qty3" ng-model="qty3" ng-options="item for item in qtys" ng-click='calPounds()'>
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <input id="countPounds3" type="text" ng-model="countPounds3" readonly><br>
+          </td>
+        </tr>
+
+        <tr>
+          <td>4</td>
+          <td>
+            <select id="variety4" ng-model="variety4" ng-options="item.Variety group by item.Group for item in varietys">
+              <option value="">Select</option>
+            </select>
+          </td>
+          <td>
+            <select id="style4" ng-model="style4" ng-options="item for item in styles">
+              <option value="">Select</option>
+            </select>
+          </td>
+          <td>
+            <select id="size4" ng-model="size4" ng-options="item for item in sizes" ng-click='calPounds()'>
+              <option value="">0</option>
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <select id="qty4" ng-model="qty4" ng-options="item for item in qtys" ng-click='calPounds()'>
+              <option value="">0</option>
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <input id="countPounds4" type="text" ng-model="countPounds4" readonly><br>
+          </td>
+        </tr>
+
+        <tr>
+          <td>5</td>
+          <td>
+            <select id="variety5" ng-model="variety5" ng-options="item.Variety group by item.Group for item in varietys">
+              <option value="">Select</option>
+            </select>
+          </td>
+          <td>
+            <select id="style5" ng-model="style5" ng-options="item for item in styles">
+              <option value="">Select</option>
+            </select>
+          </td>
+          <td>
+            <select id="size5" ng-model="size5" ng-options="item for item in sizes" ng-click='calPounds()'>
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <select id="qty5" ng-model="qty5" ng-options="item for item in qtys" ng-click='calPounds()'>
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <input id="countPounds5" type="text" ng-model="countPounds5" readonly><br>
+          </td>
+        </tr>
+
+        <tr>
+          <td>6</td>
+          <td>
+            <select id="variety6" ng-model="variety6" ng-options="item.Variety group by item.Group for item in varietys">
+              <option value="">Select</option>
+            </select>
+          </td>
+          <td>
+            <select id="style6" ng-model="style6" ng-options="item for item in styles">
+              <option value="">Select</option>
+            </select>
+          </td>
+          <td>
+            <select id="size6" ng-model="size6" ng-options="item for item in sizes" ng-click='calPounds()'>
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <select id="qty6" ng-model="qty6" ng-options="item for item in qtys" ng-click='calPounds()'>
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <input id="countPounds6" type="text" ng-model="countPounds6" readonly><br>
+          </td>
+        </tr>
+
+        <tr>
+          <td>7</td>
+          <td>
+            <select id="variety7" ng-model="variety7" ng-options="item.Variety group by item.Group for item in varietys">
+              <option value="">Select</option>
+            </select>
+          </td>
+          <td>
+            <select id="style7" ng-model="style7" ng-options="item for item in styles">
+              <option value="">Select</option>
+            </select>
+          </td>
+          <td>
+            <select id="size7" ng-model="size7" ng-options="item for item in sizes" ng-click='calPounds()'>
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <select id="qty7" ng-model="qty7" ng-options="item for item in qtys" ng-click='calPounds()'>
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <input id="countPounds7" type="text" ng-model="countPounds7" readonly><br>
+          </td>
+        </tr>
+
+        <tr>
+          <td>8</td>
+          <td>
+            <select id="variety8" ng-model="variety8" ng-options="item.Variety group by item.Group for item in varietys">
+              <option value="">Select</option>
+            </select>
+          </td>
+          <td>
+            <select id="style8" ng-model="style8" ng-options="item for item in styles">
+              <option value="">Select</option>
+            </select>
+          </td>
+          <td>
+            <select id="size8" ng-model="size8" ng-options="item for item in sizes" ng-click='calPounds()'>
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <select id="qty8" ng-model="qty8" ng-options="item for item in qtys" ng-click='calPounds()'>
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <input id="countPounds8" type="text" ng-model="countPounds8" readonly><br>
+          </td>
+        </tr>
+
+        <tr>
+          <td>9</td>
+          <td>
+            <select id="variety9" ng-model="variety9" ng-options="item.Variety group by item.Group for item in varietys">
+              <option value="">Select</option>
+            </select>
+          </td>
+          <td>
+            <select id="style9" ng-model="style9" ng-options="item for item in styles">
+              <option value="">Select</option>
+            </select>
+          </td>
+          <td>
+            <select id="size9" ng-model="size9" ng-options="item for item in sizes" ng-click='calPounds()'>
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <select id="qty9" ng-model="qty9" ng-options="item for item in qtys" ng-click='calPounds()'>
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <input id="countPounds9" type="text" ng-model="countPounds9" readonly><br>
+          </td>
+        </tr>
+
+        <tr>
+          <td>10</td>
+          <td>
+            <select id="variety10" ng-model="variety10" ng-options="item.Variety group by item.Group for item in varietys">
+              <option value="">Select</option>
+            </select>
+          </td>
+          <td>
+            <select id="style10" ng-model="style10" ng-options="item for item in styles">
+              <option value="">Select</option>
+            </select>
+          </td>
+          <td>
+            <select id="size10" ng-model="size10" ng-options="item for item in sizes" ng-click='calPounds()'>
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <select id="qty10" ng-model="qty10" ng-options="item for item in qtys" ng-click='calPounds()'>
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <input id="countPounds10" type="text" ng-model="countPounds10" readonly><br>
+          </td>
+        </tr>
+
+        <tr>
+          <td>11</td>
+          <td>
+            <select id="variety11" ng-model="variety11" ng-options="item.Variety group by item.Group for item in varietys">
+              <option value="">Select</option>
+            </select>
+          </td>
+          <td>
+            <select id="style11" ng-model="style11" ng-options="item for item in styles">
+              <option value="">Select</option>
+            </select>
+          </td>
+          <td>
+            <select id="size11" ng-model="size11" ng-options="item for item in sizes" ng-click='calPounds()'>
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <select id="qty11" ng-model="qty11" ng-options="item for item in qtys" ng-click='calPounds()'>
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <input id="countPounds11" type="text" ng-model="countPounds11" readonly><br>
+          </td>
+        </tr>
+
+        <tr>
+          <td>12</td>
+          <td>
+            <select id="variety12" ng-model="variety12" ng-options="item.Variety group by item.Group for item in varietys">
+              <option value="">Select</option>
+            </select>
+          </td>
+          <td>
+            <select id="style12" ng-model="style12" ng-options="item for item in styles">
+              <option value="">Select</option>
+            </select>
+          </td>
+          <td>
+            <select id="size12" ng-model="size12" ng-options="item for item in sizes" ng-click='calPounds()'>
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <select id="qty12" ng-model="qty12" ng-options="item for item in qtys" ng-click='calPounds()'>
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <input id="countPounds12" type="text" ng-model="countPounds12" readonly><br>
+          </td>
+        </tr>
+
+        <tr>
+          <td>13</td>
+          <td>
+            <select id="variety13" ng-model="variety13" ng-options="item.Variety group by item.Group for item in varietys">
+              <option value="">Select</option>
+            </select>
+          </td>
+          <td>
+            <select id="style13" ng-model="style13" ng-options="item for item in styles">
+              <option value="">Select</option>
+            </select>
+          </td>
+          <td>
+            <select id="size13" ng-model="size13" ng-options="item for item in sizes" ng-click='calPounds()'>
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <select id="qty13" ng-model="qty13" ng-options="item for item in qtys" ng-click='calPounds()'>
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <input id="countPounds13" type="text" ng-model="countPounds13" readonly><br>
+          </td>
+        </tr>
+
+        <tr>
+          <td>14</td>
+          <td>
+            <select id="variety14" ng-model="variety14" ng-options="item.Variety group by item.Group for item in varietys">
+              <option value="">Select</option>
+            </select>
+          </td>
+          <td>
+            <select id="style14" ng-model="style14" ng-options="item for item in styles">
+              <option value="">Select</option>
+            </select>
+          </td>
+          <td>
+            <select id="size14" ng-model="size14" ng-options="item for item in sizes" ng-click='calPounds()'>
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <select id="qty14" ng-model="qty14" ng-options="item for item in qtys" ng-click='calPounds()'>
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <input id="countPounds14" type="text" ng-model="countPounds14" readonly><br>
+          </td>
+        </tr>
+
+        <tr>
+          <td>15</td>
+          <td>
+            <select id="variety15" ng-model="variety15" ng-options="item.Variety group by item.Group for item in varietys">
+              <option value="">Select</option>
+            </select>
+          </td>
+          <td>
+            <select id="style15" ng-model="style15" ng-options="item for item in styles">
+              <option value="">Select</option>
+            </select>
+          </td>
+          <td>
+            <select id="size15" ng-model="size15" ng-options="item for item in sizes" ng-click='calPounds()'> 
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <select id="qty15" ng-model="qty15" ng-options="item for item in qtys" ng-click='calPounds()'>
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <input id="countPounds15" type="text" ng-model="countPounds15" readonly><br>
+          </td>
+        </tr>
+
+        <tr>
+          <td>16</td>
+          <td>
+            <input id="variety16" ng-model="variety16" type="text" placeholder="Type">
+          </td>
+          <td>
+            <input id="style16" ng-model="style16" type="text" placeholder="Type">
+          </td>
+          <td>
+            <select id="size16" ng-model="size16" ng-options="item for item in sizes" ng-click='calPounds()'>
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <select id="qty16" ng-model="qty16" ng-options="item for item in qtys" ng-click='calPounds()'>
+              <option value="">0</option>
+            </select>
+          </td>
+          <td>
+            <input id="countPounds16" type="text" ng-model="countPounds16" readonly><br>
+          </td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td></td>
+          <td>
+            <h4 id="totalPadding" ng-model="displayWord">Total </h4>
+          </td>
+          <td>
+            <h4>Pounds: </h4>
+          </td>
+          <td>
+            <p id="total" ng-model="totalPounds"></p>
+          </td>
+        </tr>
+      </table>
+
+      <label for="comments">
+        <strong>Comment: </strong>
+      </label>
+      <br />
+      <textarea id="comments" ng-model="comments" placeholder="Special order request..."></textarea>
+      <br>
+      <br />
+
+      <input type="button" id="reset" ng-click="reset()" value="Reset" />
+      <input type="submit" id="submit" value="Submit" />
+
+    </fieldset>
+
+  </form>
+</div>

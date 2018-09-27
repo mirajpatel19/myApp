@@ -18,7 +18,6 @@ app.controller('picklistctrl', function ($scope, $http, myService) {
         $scope.fullOrder = value;
         //calling the service, inject myService into the function!
         myService.fillOrder($scope.fullOrder);
-        $scope.test = myService.getOrder();
     };
 
     //getting next cheese sale date.
